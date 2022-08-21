@@ -7,4 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
+
+    //Since there's no method to fetch name in the JPA repository, we'll create a method to fetch the departments by their names
+    public Department findByDepartmentName(String departmentName);
+
+    public Department findByDepartmentNameIgnoreCase(String departmentName);
 }
