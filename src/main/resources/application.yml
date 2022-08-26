@@ -1,4 +1,12 @@
+server:
+  port: '8081'
+
 spring:
+  profiles:
+    active: qa
+---
+spring:
+  profiles: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
@@ -10,5 +18,32 @@ spring:
     show-sql: 'true'
 welcome:
   message: Hi there! This is how you can add a config file in properties!
-server:
-  port: '8081'
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Hi there! This is how you can add a config file in properties!
+---
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Hi there! This is how you can add a config file in properties!
+---
